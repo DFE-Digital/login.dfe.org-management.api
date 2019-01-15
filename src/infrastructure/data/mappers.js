@@ -1,15 +1,16 @@
-const mapOrganisationEntity = async (orgEntity) => {
+const { organisationCategory } = require('./organisationsRepository');
+
+const mapOrganisationEntity = (orgEntity) => {
   if (!orgEntity) {
     return undefined;
   }
-  return orgEntity.map((entity) => {
-    return {
-      id: entity.id,
-      name: entity.name,
-      urn: entity.URN,
-      ukprn: entity.UKPRN,
-    };
-  })
+  return {
+    id: orgEntity.id,
+    name: orgEntity.name,
+    urn: orgEntity.URN,
+    category: organisationCategory.find(x => x.id === orgEntity.Category),
+    legacyId: orgEntity.legacyId,
+  };
 };
 
 module.exports = {

@@ -15,8 +15,12 @@ const define = (db, schema) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
-    UKPRN: {
+    Category: {
       type: Sequelize.STRING,
+      allowNull: true,
+    },
+    legacyId: {
+      type: Sequelize.BIGINT,
       allowNull: true,
     },
   }, {

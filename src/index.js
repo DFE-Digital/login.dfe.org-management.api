@@ -22,6 +22,7 @@ if (config.hostingEnvironment.env !== 'dev') {
 }
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   req.correlationId = req.get('x-correlation-id') || `accci-${Date.now()}`;
   next();
