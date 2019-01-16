@@ -7,7 +7,7 @@ const listOrganisations = require('./listOrganisations');
 const createOrganisation = require('./createOrganisation');
 const getOrganisation = require('./getOrganisation');
 const updateOrganisation = require('./updateOrganisation');
-
+const deleteOrganisation = require('./deleteOrganisation');
 const router = express.Router();
 
 const routes = () => {
@@ -16,6 +16,7 @@ const routes = () => {
 
   router.get('/:id', asyncWrapper(getOrganisation));
   router.put('/:id', asyncWrapper(updateOrganisation));
+  router.delete('/:id', asyncWrapper(deleteOrganisation));
 
   return router;
 };

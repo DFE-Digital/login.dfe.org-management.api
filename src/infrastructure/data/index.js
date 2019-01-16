@@ -136,6 +136,23 @@ const updateOrganisation = async (existingOrganisation, organisation) => {
   })
 };
 
+const deleteOrganisation = async (organisationId, correlationId) => {
+  try {
+    logger.info(`Deleting org ${organisationId} ${correlationId}`, { correlationId });
+    await organisations.destroy(
+      {
+        where: {
+          id: {
+            [Op.eq]: organisationId,
+          },
+        },
+      });
+  } catch (e) {
+    logger.error(`error deleting organisation - ${e.message} (id: ${correlationId})`, { correlationId });
+    throw e;
+  }
+};
+
 module.exports = {
   getPagedList,
   search,
@@ -143,5 +160,6 @@ module.exports = {
   getOrgById,
   getNextOrganisationLegacyId,
   getOrgByUrn,
-  updateOrganisation
+  updateOrganisation,
+  deleteOrganisation
 };
