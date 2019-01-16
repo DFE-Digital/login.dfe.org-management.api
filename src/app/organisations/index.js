@@ -8,6 +8,7 @@ const createOrganisation = require('./createOrganisation');
 const getOrganisation = require('./getOrganisation');
 const updateOrganisation = require('./updateOrganisation');
 const deleteOrganisation = require('./deleteOrganisation');
+const getOrgByExternalId = require('./getOrganisationByExternalId');
 const router = express.Router();
 
 const routes = () => {
@@ -17,6 +18,8 @@ const routes = () => {
   router.get('/:id', asyncWrapper(getOrganisation));
   router.put('/:id', asyncWrapper(updateOrganisation));
   router.delete('/:id', asyncWrapper(deleteOrganisation));
+
+  router.get('/by-external-id/:type/:id', asyncWrapper(getOrgByExternalId));
 
   return router;
 };
