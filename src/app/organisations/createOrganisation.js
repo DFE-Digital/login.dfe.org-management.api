@@ -16,6 +16,7 @@ const mapOrganisation = (req) => {
 };
 
 const createOrganisation = async (req, res) => {
+  const correlationId = req.correlationId;
   try {
     const organisation = mapOrganisation(req);
     const category = organisation.category ? organisation.category.id : undefined;
@@ -30,7 +31,10 @@ const createOrganisation = async (req, res) => {
     await addOrganisation(organisation);
     return res.status(201).send();
   } catch (e) {
-    logger.error(e);
+    logger.error(`Error creating new organisation (correlation id: ${correlationId}) - ${e.message}`, {
+      correlationId,
+      stack: e.stack,
+    });
     res.status(500).send(e.message);
   }
 };
