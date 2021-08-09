@@ -32,7 +32,8 @@
     "login.dfe.express-error-handling": "git+https://github.com/DFE-Digital/login.dfe.express-error-handling.git#v1.2",
     "login.dfe.healthcheck": "git+https://github.com/DFE-Digital/login.dfe.healthcheck.git#v1.4.3",
     "login.dfe.sanitization": "git+https://github.com/DFE-Digital/login.dfe.sanitization.git#v1.0",
-    "sequelize": "^4.42.0",
+    "sequelize": "^6.3.3",
+    "tedious": "^8.3.0",
     "uuid": "^3.1.0",
     "winston": "^2.4.0"
   },
